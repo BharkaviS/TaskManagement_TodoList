@@ -1,0 +1,25 @@
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+<br>
+<br>
+<br>
+<div style="text-align: center;margin:20px;font-family: Berkshire Swash, cursive; color: #562349">
+	<h1>Your Tasks are here!</h1>
+</div>
+<div class="card" *ngFor="let task of tasks | async" style="width: 20rem; margin:10px;margin-left: 39vw;background-color: #fee2b3;border-color:#562349;color: #562349;border-width: 3px;">
+	<div class="card-body">
+    	<h5 class="card-title">{{task.Title}} 
+	    	<span class="badge badge-warning" *ngIf="task.Labels=='Work'">{{task.Labels}} </span>
+	    	<span class="badge badge-primary" *ngIf="task.Labels=='Personal'">{{task.Labels}} </span>
+	    	<span class="badge badge-success" *ngIf="task.Labels=='Shopping'">{{task.Labels}} </span>
+	    	<span class="badge badge-dark" *ngIf="task.Labels=='Others'">{{task.Labels}} </span>
+	    	<span style="margin-left:2px" class="badge badge-pill badge-primary" *ngIf="task.Status=='New'">   {{task.Status}}</span>
+	    	<span style="margin-left:2px" class="badge badge-pill badge-success" *ngIf="task.Status=='In Progress'">   {{task.Status}}</span>
+	    	<span style="margin-left:2px" class="badge badge-pill badge-secondary" *ngIf="task.Status=='Completed'">   {{task.Status}}</span>
+    	</h5>
+    	<h6 class="card-subtitle">{{task.Content}}</h6>
+    	<p class="card-text">{{task.Due_date}}</p>
+        <button type="button" class = "btn btn-danger" (click)=deleteTask(task.id)>Delete</button>
+	</div>
+</div>
+<a routerLink="/edit_task" class="btn btn-dark" style="margin-left: 42vw;margin-top: 5vh;margin-bottom:25px;margin-right: 5px;border-width: 3px;border-color: #562349;color:#562349; background-color: #fee2b3"><b>Edit tasks</b></a>
+<a routerLink="/createTask" class = "btn btn-outline-dark" style="margin-top: 5vh;margin-bottom:25px;border-width: 3px;border-width: 3px;border-color: #562349;color:#562349; background-color: #fee2b3"><b>Add tasks</b></a>

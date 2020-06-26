@@ -1,0 +1,66 @@
+<br>
+<br>
+<br>
+<br>
+<ul>
+  <div class= "row">
+    <div *ngFor="let task of tasks | async">
+      <div class = "col-sm-12">
+        <div class="card" style="width: 18rem;border-color:#562349;color: #562349;border-width: 3px;background-color: #fee2b3">
+          <form (ngSubmit)="updateTask(task)">
+            <table style="margin: 20px">
+              <tr>
+                <td>Title: </td>
+                <td><input type="text" name="title" [(ngModel)]="task.Title" [disabled]="!task.isEditable" /></td>
+              </tr>
+              <br>
+              <tr>
+                  <td>Content: </td>
+                  <td> <input type="text" name="content" [(ngModel)]="task.Content" [disabled]="!task.isEditable" /></td>
+              </tr>
+              <br>
+              <tr>
+                <td>Due Date: </td>
+                <td> <input type="text" name="due_date" [(ngModel)]="task.Due_date" [disabled]="!task.isEditable" /></td>
+              </tr>
+              <br>
+              <tr>
+                <td>Label: </td>
+                <td><select name="label" [(ngModel)]="task.Labels" [disabled]="!task.isEditable">
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <br>
+              <tr>
+                <td>Status: </td>
+                <td><select name="status" [(ngModel)]="task.Status" [disabled]="!task.isEditable">
+                    <option value="New">New</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </td>
+              </tr>
+              <br>
+              <tr>
+                <td></td>
+                <td>
+                  <button *ngIf="!task.isEditable" class = "btn btn-primary" (click)="task.isEditable=!task.isEditable">Edit</button>
+                  <button type="submit" class = "btn btn-success" *ngIf="task.isEditable">Save</button>
+                  <button class = "btn btn-danger" (click) = "task.isEditable = !task.isEditable" style="margin-left: 5px">Cancel</button>
+                </td>
+              </tr>
+              <br>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ul>
+<a routerLink="" class="btn btn-dark" style="margin-left: 32vw;margin-top: 5vh;margin-bottom:25px;margin-right: 5px;border-width: 3px;border-color: #562349;color:#562349; background-color: #fee2b3"><b>Finished Editing??View All tasks!</b></a>
+<a routerLink="/createTask" class = "btn btn-outline-dark" style="margin-top: 5vh;margin-bottom:25px;border-width: 3px;border-width: 3px;border-color: #562349;color:#562349; background-color: #fee2b3"><b>Wanna add some more tasks??</b></a>
+

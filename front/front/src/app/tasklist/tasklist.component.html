@@ -1,0 +1,54 @@
+<br>
+<br>
+<br>
+<div class="card" style="width:30rem;margin-top: 10vh;margin-left: 34vw;margin-bottom:40px;background-color: #fee2b3; border-color:#562349;color: #562349;border-width: 3px">
+  <h2 style="text-align: center;margin-top: 5px">Add Your Task!</h2>
+  <br>
+
+  <form method="POST" [formGroup]="task_form" (ngSubmit)="onSubmit()">
+    <table align="center">
+      <tr>
+        <td>Title </td>
+        <td><input type="text" formControlName="Title" style="margin-left:10px"required ></td>
+      </tr>
+      <br>
+      <tr>
+        <td>Content </td>
+        <td><input type="text" formControlName="Content" style="height:50px;margin-left: 10px" required></td>
+      </tr>
+      <br>
+      <tr>
+    	  <td>Due Date </td>
+        <td><input type="date" formControlName="Due_date" style="margin-left:10px" required></td>
+  	  </tr>
+      <br>
+      <tr>
+        <td>Label </td>
+          <td><select name="label"  style="margin-left:10px" formControlName="Labels">
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Others">Others</option>
+              </select>
+          </td>
+      </tr>
+      <br>
+      <tr>
+        <td>Status </td>
+        <td><select name="status" formControlName="Status" style="margin-left:10px">
+            <option value="New">New</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td><a class = "btn btn-warning" routerLink="" style="margin-bottom: 10px;margin-right: 5px"><b>View tasks!</b></a>
+        </td>
+        <td><button class = "btn btn-primary" type="submit" style="margin-bottom: 10px;margin-right: 5px">Add Task</button>
+        <button class = "btn btn-danger" type="submit" (click)="Clear()" style="margin-bottom: 10px">Cancel</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
